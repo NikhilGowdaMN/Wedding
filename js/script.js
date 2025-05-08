@@ -623,8 +623,9 @@
                 if (slickNext) {
                   slickNext.click();
                 }
-              }, 5000);
-            toggleMobileNavigation();
+              }, 4000);
+              var $box = $('#hero');
+              scrollToMiddleAndBack($box);
 
             smallNavFunctionality();
 
@@ -637,7 +638,17 @@
             toggleMobileNavigation();
         });
 
+        function scrollToMiddleAndBack($element, delay = 1000, speed = 500) {
+            var scrollTo = $element[0].scrollHeight / 2;
 
+            // Scroll to 50%
+            $element.scrollTop(scrollTo);
+
+            // Scroll back to top after a delay
+            setTimeout(function () {
+            $element.animate({ scrollTop: 0 }, speed);
+            }, delay);
+        }
 
     /*==========================================================================
         WHEN WINDOW SCROLL
