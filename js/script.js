@@ -638,16 +638,16 @@
             toggleMobileNavigation();
         });
 
-        function scrollToMiddleAndBack($element, delay = 1000, speed = 500) {
-            var scrollTo = $element[0].scrollHeight / 2;
-
-            // Scroll to 50%
-            $element.scrollTop(scrollTo);
-
-            // Scroll back to top after a delay
-            setTimeout(function () {
-            $element.animate({ scrollTop: 0 }, speed);
-            }, delay);
+        function scrollToMiddleAndBack($div, delay = 1000, speed = 500) {
+           setTimeout(function() {
+	      // Scroll down to 50px
+	      $div.animate({ scrollTop: 50 }, 500, function() {
+	        // After scrolling down, scroll back to top
+	        setTimeout(function() {
+	          $div.animate({ scrollTop: 0 }, 500);
+	        }, 1000); // Wait 1 second before scrolling back
+	      });
+	    }, 2000); 
         }
 
     /*==========================================================================
